@@ -1,10 +1,9 @@
 const express = require('express');
 const cors = require('cors')
+require('dotenv').config()
 const dbConnection = require('./config/database');
 
 const app = express();
-
-const PORT = 5000;
 
 //Conectarse a BBDD
 dbConnection()
@@ -20,5 +19,5 @@ app.use('/api/items', require('./routes/items'));
 
 //Escuchar en puerto
 app.listen(PORT, () => {
-  console.log('Escuchando en puerto: ', PORT);
+  console.log('Escuchando en puerto: ', process.env.PORT);
 });
