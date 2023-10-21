@@ -18,6 +18,6 @@ app.use(express.json())
 app.use('/api/items', require('./routes/items'));
 
 //Escuchar en puerto
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log('Escuchando en puerto: ', process.env.PORT);
 });
