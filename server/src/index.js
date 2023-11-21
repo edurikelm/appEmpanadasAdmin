@@ -19,6 +19,8 @@ app.use(express.json());
 
 //Rutas
 app.use('/api/items', require('./routes/items'));
+app.use('/api/productos', require('./routes/productos'));
+app.use('/api/ventas', require('./routes/ventas'));
 
 //Escuchar en puerto
 app.listen(process.env.PORT, () => {

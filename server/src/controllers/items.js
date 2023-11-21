@@ -3,11 +3,14 @@ const Item = require('../models/Item');
 const getItems = async (req, res) => {
   try {
     const items = await Item.find();
-    res.json({
+    res.status(200).json({
       ok: true,
       items,
     });
   } catch (err) {
+    res.status(404).json({
+      ok: false
+    })
     console.log(err);
   }
 };
@@ -16,12 +19,16 @@ const postItem = async (req, res) => {
   const item = new Item(req.body);
   try {
     const itemGuardado = await item.save();
-    res.json({
+    res.status(201).json({
       ok: true,
       itemGuardado,
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      ok: false,
+      msg: err.message
+    })
+    console.log(err.message);
   }
 };
 

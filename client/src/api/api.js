@@ -1,12 +1,14 @@
 import axios from 'axios';
+import { ordenarArrayFechas } from '../../helpers/formatearFecha';
 
 const VITE_API_URL = import.meta.env.VITE_API_URL || 5000
 
 export const getItems = async () => {
 
   try {
-    const items = await axios.get(`${VITE_API_URL}/items`);
-    return items.data.items;
+    const {data} = await axios.get(`${VITE_API_URL}/items`);
+    const nuevaData = ordenarArrayFechas(data.items)
+    return nuevaData;
   } catch (err) {
     console.log(err);
   }
