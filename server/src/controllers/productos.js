@@ -15,6 +15,22 @@ const getproductos = async (req, res) => {
   }
 };
 
+const getProducto = async (req, res) => {
+  const id = req.params.id
+  try {
+    const producto = await Producto.findById(id);
+    res.status(200).json({
+      ok: true,
+      producto
+    });
+  } catch (err) {
+    res.status(404).json({
+      ok: false,
+      msg: err.message
+    })
+  }
+};
+
 const postProducto = async (req, res) => {
   const producto = new Producto(req.body);
   try {
@@ -80,5 +96,6 @@ module.exports = {
   getproductos,
   postProducto,
   putProducto,
-  deleteProducto
+  deleteProducto,
+  getProducto
 }

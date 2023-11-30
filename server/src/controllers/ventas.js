@@ -1,8 +1,10 @@
+const Producto = require('../models/Producto');
 const Venta = require('../models/Venta');
 
 const getVentas = async (req, res) => {
+  
   try {
-    const ventas = await Venta.find();
+    const ventas = await Venta.find().populate('producto');
     res.status(200).json({
       ok: true,
       ventas
@@ -16,7 +18,13 @@ const getVentas = async (req, res) => {
 };
 
 const postVenta = async (req, res) => {
-  const venta = new Venta(req.body);
+  const { producto } = req.body
+  const productoById = await Producto.findById(producto)
+  const nuevaVenta = {
+    ...req.body,
+    producto: productoById
+  }
+  const venta = new Venta(nuevaVenta);
   try {
     const ventaGuardado = await venta.save();
     res.status(201).json({

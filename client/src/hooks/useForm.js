@@ -3,7 +3,7 @@ import { EditandoContext } from '../contexts/editando';
 
 export const useForm = (initialState) => {
 
-  const { editando, inputData, setEditando, setInputData } = useContext(EditandoContext);
+  const { editando, inputData, isCheck, setEditando, setInputData, setIsCheck } = useContext(EditandoContext);
 
   const handleInputChange = (e) => {
     setInputData({
@@ -20,5 +20,5 @@ export const useForm = (initialState) => {
   //   setInputData(initialState)
   // }
 
-  return { handleInputChange, resetInput, inputData, setInputData, editando, setEditando };
+  return { handleInputChange, resetInput, inputData, setInputData, isCheck, editando, setEditando, setIsCheck };
 };

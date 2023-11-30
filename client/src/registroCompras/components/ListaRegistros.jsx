@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { formatearValor } from "../../../helpers/calculosEconomicos";
 import { formatearFecha } from "../../../helpers/formatearFecha";
 import { eliminarItem } from "../../api/api";
 import { useForm } from "../../hooks/useForm";
+import { EditandoContext } from "../../contexts/editando";
 
 export const ListaRegistros = ({data, handleObtenerListaCostos}) => {
 
+  const { setIsCheck } = useContext(EditandoContext)
 
   const { setEditando, setInputData } = useForm({
     fecha: '',
@@ -22,7 +25,7 @@ export const ListaRegistros = ({data, handleObtenerListaCostos}) => {
     handleObtenerListaCostos();
   };
   return (
-    <div className="flex flex-col h-80 md:w-1/2 gap-4">
+    <div className="flex flex-col h-80 w-full md:w-1/3 gap-4">
       <strong>
         <h1 className="text-black text-2xl">Lista compras mes actual</h1>
       </strong>
@@ -32,6 +35,7 @@ export const ListaRegistros = ({data, handleObtenerListaCostos}) => {
             className="flex justify-between h-10 m-4 rounded-2xl bg-slate-200"
             key={item._id}
             onDoubleClick={() => {
+              setIsCheck(false)
               setEditando(true);
               setInputData({
                 id: item._id,
