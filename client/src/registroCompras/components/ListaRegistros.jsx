@@ -25,7 +25,7 @@ export const ListaRegistros = ({data, handleObtenerListaCostos}) => {
     handleObtenerListaCostos();
   };
   return (
-    <div className="flex flex-col h-80 w-full md:w-1/3 gap-4">
+    <div className="flex flex-col h-80 md:w-2/3 gap-4 text-xs md:text-base w-96">
       <strong>
         <h1 className="text-black text-2xl">Lista compras mes actual</h1>
       </strong>

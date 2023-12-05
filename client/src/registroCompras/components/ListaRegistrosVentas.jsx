@@ -23,7 +23,7 @@ export const ListaRegistrosVentas = ({
     handleObtenerListaVentas();
   };
   return (
-    <div className="flex flex-col h-80 w-full md:w-1/3 gap-4">
+    <div className="flex flex-col h-80 md:w-2/3 gap-4 text-xs md:text-sm w-96">
       <strong>
         <h1 className="text-black text-2xl">Lista ventas mes actual</h1>
       </strong>
@@ -45,14 +45,14 @@ export const ListaRegistrosVentas = ({
             <span className="flex items-center justify-center p-4">
               {formatearFecha(item.fecha)}
             </span>
-            <span className="flex items-center justify-center">{
-              item.producto.nombre
-            }</span>
+            <span className="flex items-center justify-center">
+              {item.producto.nombre}
+            </span>
             <span className="flex items-center justify-center">
               {item.cantidad}
             </span>
             <span className="flex items-center justify-center">
-              {formatearValor(item.cantidad*item.producto.valor)}
+              {formatearValor(item.cantidad * item.producto.valor)}
             </span>
             <button
               className="bg-red-400 w-10 rounded-md text-white"

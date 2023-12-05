@@ -4,8 +4,10 @@ export const formatearFecha = (fecha) => {
 }
 
 export const ordenarArrayFechas = (data) => {
-  const mesActual = new Date().getMonth()
+  const mesActual = new Date().getMonth() + 1
   const dataOrdenada = data.sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
-  const dataOrdenadaMesActual = dataOrdenada.filter((item) => new Date(item.fecha).getMonth() === mesActual )
-  return dataOrdenadaMesActual
+  // const dataOrdenadaMesActual = dataOrdenada.map((item) => new Date(item.fecha).getMonth() + 1)
+  const dataOrdenadaMesActual2 = dataOrdenada.filter((item) => new Date(item.fecha).getMonth() + 1 === mesActual)
+  // console.log(dataOrdenadaMesActual)
+  return dataOrdenadaMesActual2
 }

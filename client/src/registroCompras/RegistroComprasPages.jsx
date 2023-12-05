@@ -24,13 +24,13 @@ const RegistroComprasPages = () => {
   })
 
   return (
-    <section className="flex flex-col bg-slate-200 h-screen justify-center">
+    <section className="flex flex-col bg-slate-200 xl:h-screen justify-center">
       <div className="flex flex-row justify-center gap-7 h-20 mb-10">
         <CardMonto tipo="Gastos" color="bg-red-300" total={formatearValor(totalCostos)}/>
         <CardMonto tipo="Ingreso" color="bg-blue-300" total={formatearValor(totalVentas-totalCostos)}/>
         <CardMonto tipo="Ventas" color="bg-green-300" total={formatearValor(totalVentas)}/>
       </div>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-5 mx-5">
+      <div className="flex flex-col xl:flex-row justify-center items-center gap-2 mx-5">
         <FormularioItems
           handleObtenerListaCostos={handleObtenerListaCostos}
           handleObtenerListaVentas={handleObtenerListaVentas}
